@@ -1,0 +1,22 @@
+config INPUT_LIS2DS12
+         tristate "STMicroelectronics LIS2DS12 sensor"
+         depends on I2C && SYSFS
+         help
+           This driver support the STMicroelectronics LIS2DS12 sensor.
+
+           To compile this driver as a module, choose M here. The module
+	   will be called lis2ds12.
+
+if INPUT_LIS2DS12
+choice
+	prompt "LIS2DS12 bus selection"
+	default INPUT_LIS2DS12_I2C
+
+config INPUT_LIS2DS12_I2C
+	bool "I2C"
+
+config INPUT_LIS2DS12_SPI
+	bool "SPI"
+endchoice
+
+endif
